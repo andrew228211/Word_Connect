@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using Random = System.Random;
 
 
 namespace Brute_Force_Algorithm
@@ -151,12 +153,17 @@ namespace Brute_Force_Algorithm
         /// </summary>
         private Position FindPositionForWord(string word)
         {
+            if (string.IsNullOrWhiteSpace(word)) return null;
+
             List<Position> bests = new List<Position>();
             //Kiểm tra char_index của mỗi chữ cái để xem có thể đặt theo hướng không
+            Debug.Log(char_index.Count + " count word");
             for (int i = 0; i < word.Length; i++)
             {
-                var possible_locations_on_grid = char_index[word[i]];
-                if (possible_locations_on_grid == null) continue;
+                if (!char_index.TryGetValue(word[i], out var possible_locations_on_grid) || possible_locations_on_grid == null)
+                {
+                    continue;
+                }
                 foreach (var point in possible_locations_on_grid)
                 {
                     var r = point.row;

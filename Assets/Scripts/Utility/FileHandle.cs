@@ -50,6 +50,7 @@ using UnityEngine;
                 string s = txt.text.Trim();
                 return s;
             }
+            Debug.LogError($"Khong tim thay TextAsset trong Resources voi path: {fileName}");
             return null;
         }
 

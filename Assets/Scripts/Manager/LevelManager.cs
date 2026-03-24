@@ -33,16 +33,34 @@ public class LevelManager : MonoBehaviour
     private void InitGrid()
     {
         //Lấy dữ liệu từ file và xử lí nó dùng thuật toán brutforce
-        string[] txt = FileHandle.LoadText(_fileName).Split("\r\n");
+        string rawText = FileHandle.LoadText(_fileName);
+        if (string.IsNullOrWhiteSpace(rawText))
+        {
+            Debug.LogError($"Khong the load file text tu Resources/{_fileName}");
+            return;
+        }
+
+        string[] txt = rawText.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
        // string[] arr = { "clan", "nova", "oval", "volcano", "vocal", "cool", "coal", "van", "loan", "cola", "can", "con" };
         List<string> words = new List<string>();
         _dicWordCells = new Dictionary<string, List<Cell>>();
         foreach (string s in txt)
         {
-            string tmp=s.ToUpper();
+            string tmp = s.Trim().ToUpper();
+            if (string.IsNullOrEmpty(tmp)) continue;
+
             words.Add(tmp);
-            _dicWordCells.Add(tmp, new List<Cell>());
+            if (!_dicWordCells.ContainsKey(tmp))
+            {
+                _dicWordCells.Add(tmp, new List<Cell>());
+            }
         }
+        if (words.Count < 2)
+        {
+            Debug.LogError($"Du lieu tu Resources/{_fileName} khong du toi thieu 2 tu de tao crossword.");
+            return;
+        }
+        Debug.Log(words.Count + " words loaded");
         BuildCrossword cw = new BuildCrossword(words, words);
         int tries = 10;
         CrosswordCell[,] _crosswordCells = cw.GetSquareGrid(tries);

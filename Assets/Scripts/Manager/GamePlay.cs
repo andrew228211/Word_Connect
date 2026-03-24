@@ -30,6 +30,7 @@ public class GamePlay : Singleton<GamePlay>
     }
     private void Update()
     {
+        Debug.Log(points.Count);
         OnTouch();
     }
     public void SetSumPos(int maxSize)

@@ -2646,6 +2646,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 814491596}
+  - {fileID: 1320047565}
   m_Father: {fileID: 1565976755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -3771,7 +3772,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1150562938}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1069706849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4735,7 +4736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da197f0f391c5684ba8ff830e13604fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
+  dontDestroyOnLoad: 1
   _lineRenderer: {fileID: 2141899878}
   _layer:
     serializedVersion: 2
@@ -6834,7 +6835,6 @@ SceneRoots:
   - {fileID: 1750514800}
   - {fileID: 123651129}
   - {fileID: 733927429}
-  - {fileID: 1320047565}
   - {fileID: 1188341165}
   - {fileID: 1566893878}
   - {fileID: 1977470079}
